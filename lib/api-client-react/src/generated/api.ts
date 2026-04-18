@@ -20,6 +20,7 @@ import type {
   CreatePredictionBody,
   Disease,
   DiseaseCount,
+  DiseaseImageGallery,
   ErrorResponse,
   HealthStatus,
   Prediction,
@@ -515,6 +516,93 @@ export function useGetDisease<
   },
 ): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
   const queryOptions = getGetDiseaseQueryOptions(id, options);
+
+  const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & {
+    queryKey: QueryKey;
+  };
+
+  return { ...query, queryKey: queryOptions.queryKey };
+}
+
+/**
+ * @summary Get field and lab images for a disease
+ */
+export const getGetDiseaseImagesUrl = (id: number) => {
+  return `/api/diseases/${id}/images`;
+};
+
+export const getDiseaseImages = async (
+  id: number,
+  options?: RequestInit,
+): Promise<DiseaseImageGallery> => {
+  return customFetch<DiseaseImageGallery>(getGetDiseaseImagesUrl(id), {
+    ...options,
+    method: "GET",
+  });
+};
+
+export const getGetDiseaseImagesQueryKey = (id: number) => {
+  return [`/api/diseases/${id}/images`] as const;
+};
+
+export const getGetDiseaseImagesQueryOptions = <
+  TData = Awaited<ReturnType<typeof getDiseaseImages>>,
+  TError = ErrorType<ErrorResponse>,
+>(
+  id: number,
+  options?: {
+    query?: UseQueryOptions<
+      Awaited<ReturnType<typeof getDiseaseImages>>,
+      TError,
+      TData
+    >;
+    request?: SecondParameter<typeof customFetch>;
+  },
+) => {
+  const { query: queryOptions, request: requestOptions } = options ?? {};
+
+  const queryKey = queryOptions?.queryKey ?? getGetDiseaseImagesQueryKey(id);
+
+  const queryFn: QueryFunction<
+    Awaited<ReturnType<typeof getDiseaseImages>>
+  > = ({ signal }) => getDiseaseImages(id, { signal, ...requestOptions });
+
+  return {
+    queryKey,
+    queryFn,
+    enabled: !!id,
+    ...queryOptions,
+  } as UseQueryOptions<
+    Awaited<ReturnType<typeof getDiseaseImages>>,
+    TError,
+    TData
+  > & { queryKey: QueryKey };
+};
+
+export type GetDiseaseImagesQueryResult = NonNullable<
+  Awaited<ReturnType<typeof getDiseaseImages>>
+>;
+export type GetDiseaseImagesQueryError = ErrorType<ErrorResponse>;
+
+/**
+ * @summary Get field and lab images for a disease
+ */
+
+export function useGetDiseaseImages<
+  TData = Awaited<ReturnType<typeof getDiseaseImages>>,
+  TError = ErrorType<ErrorResponse>,
+>(
+  id: number,
+  options?: {
+    query?: UseQueryOptions<
+      Awaited<ReturnType<typeof getDiseaseImages>>,
+      TError,
+      TData
+    >;
+    request?: SecondParameter<typeof customFetch>;
+  },
+): UseQueryResult<TData, TError> & { queryKey: QueryKey } {
+  const queryOptions = getGetDiseaseImagesQueryOptions(id, options);
 
   const query = useQuery(queryOptions) as UseQueryResult<TData, TError> & {
     queryKey: QueryKey;

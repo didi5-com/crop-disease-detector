@@ -70,6 +70,18 @@ export interface DiseaseCount {
   percentage: number;
 }
 
+export interface DiseaseImage {
+  url: string;
+  attribution: string;
+  source: string;
+  licenseCode?: string | null;
+}
+
+export interface DiseaseImageGallery {
+  fieldImages: DiseaseImage[];
+  labImages: DiseaseImage[];
+}
+
 export interface ErrorResponse {
   error: string;
 }

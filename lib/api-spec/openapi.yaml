@@ -130,6 +130,31 @@ paths:
               schema:
                 $ref: "#/components/schemas/ErrorResponse"
 
+  /diseases/{id}/images:
+    get:
+      operationId: getDiseaseImages
+      tags: [diseases]
+      summary: Get field and lab images for a disease
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Disease image gallery
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DiseaseImageGallery"
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
   /stats/summary:
     get:
       operationId: getStatsSummary
@@ -297,6 +322,38 @@ components:
         - diseaseName
         - count
         - percentage
+
+    DiseaseImageGallery:
+      type: object
+      properties:
+        fieldImages:
+          type: array
+          items:
+            $ref: "#/components/schemas/DiseaseImage"
+        labImages:
+          type: array
+          items:
+            $ref: "#/components/schemas/DiseaseImage"
+      required:
+        - fieldImages
+        - labImages
+
+    DiseaseImage:
+      type: object
+      properties:
+        url:
+          type: string
+        attribution:
+          type: string
+        source:
+          type: string
+        licenseCode:
+          type: string
+          nullable: true
+      required:
+        - url
+        - attribution
+        - source
 
     ErrorResponse:
       type: object

@@ -95,6 +95,32 @@ export const GetDiseaseResponse = zod.object({
 });
 
 /**
+ * @summary Get field and lab images for a disease
+ */
+export const GetDiseaseImagesParams = zod.object({
+  id: zod.coerce.number(),
+});
+
+export const GetDiseaseImagesResponse = zod.object({
+  fieldImages: zod.array(
+    zod.object({
+      url: zod.string(),
+      attribution: zod.string(),
+      source: zod.string(),
+      licenseCode: zod.string().nullish(),
+    }),
+  ),
+  labImages: zod.array(
+    zod.object({
+      url: zod.string(),
+      attribution: zod.string(),
+      source: zod.string(),
+      licenseCode: zod.string().nullish(),
+    }),
+  ),
+});
+
+/**
  * @summary Get dashboard statistics summary
  */
 export const GetStatsSummaryResponse = zod.object({
