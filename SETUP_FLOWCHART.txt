@@ -1,0 +1,289 @@
+╔══════════════════════════════════════════════════════════════════════╗
+║                                                                      ║
+║              🌾 SETUP FLOWCHART - VISUAL GUIDE 🌾                   ║
+║                                                                      ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+
+                         START HERE
+                              │
+                              ▼
+                    ┌─────────────────────┐
+                    │  Do you have        │
+                    │  Python installed?  │
+                    └─────────┬───────────┘
+                              │
+                    ┌─────────┴─────────┐
+                    │                   │
+                   YES                 NO
+                    │                   │
+                    │                   ▼
+                    │         ┌──────────────────────┐
+                    │         │ Download & Install   │
+                    │         │ Python 3.12+         │
+                    │         │ python.org/downloads │
+                    │         │ ✅ Add to PATH       │
+                    │         └──────────┬───────────┘
+                    │                    │
+                    └────────────────────┘
+                              │
+                              ▼
+                    ┌─────────────────────┐
+                    │  Extract ZIP file   │
+                    │  to a folder        │
+                    └─────────┬───────────┘
+                              │
+                              ▼
+                    ┌─────────────────────┐
+                    │  Open Terminal      │
+                    │  (PowerShell/CMD)   │
+                    └─────────┬───────────┘
+                              │
+                              ▼
+                    ┌─────────────────────┐
+                    │  Navigate to        │
+                    │  python_site folder │
+                    │  cd path/to/folder  │
+                    └─────────┬───────────┘
+                              │
+                              ▼
+                    ┌─────────────────────┐
+                    │  Create Virtual Env │
+                    │  python -m venv     │
+                    │  .venv              │
+                    └─────────┬───────────┘
+                              │
+                              ▼
+                    ┌─────────────────────┐
+                    │  Activate Venv      │
+                    │  .\.venv\Scripts\   │
+                    │  Activate.ps1       │
+                    └─────────┬───────────┘
+                              │
+                              ▼
+                    ┌─────────────────────┐
+                    │  Install Packages   │
+                    │  pip install -r     │
+                    │  requirements.txt   │
+                    │  ⏳ 5-10 minutes    │
+                    └─────────┬───────────┘
+                              │
+                              ▼
+                    ┌─────────────────────┐
+                    │  Copy .env file     │
+                    │  Copy-Item          │
+                    │  .env.example .env  │
+                    └─────────┬───────────┘
+                              │
+                              ▼
+                    ┌─────────────────────┐
+                    │  Initialize DB      │
+                    │  python scripts/    │
+                    │  init_db.py         │
+                    └─────────┬───────────┘
+                              │
+                              ▼
+                    ┌─────────────────────┐
+                    │  Run Application    │
+                    │  python run.py      │
+                    └─────────┬───────────┘
+                              │
+                              ▼
+                    ┌─────────────────────┐
+                    │  Open Browser       │
+                    │  http://127.0.0.1   │
+                    │  :5000              │
+                    └─────────┬───────────┘
+                              │
+                              ▼
+                         🎉 SUCCESS!
+                    Upload crop images
+                    and detect diseases!
+
+
+═══════════════════════════════════════════════════════════════════════
+
+                    TROUBLESHOOTING FLOWCHART
+
+═══════════════════════════════════════════════════════════════════════
+
+
+    ┌─────────────────────────────────────────────────────────┐
+    │  Problem: "python is not recognized"                    │
+    └─────────────────┬───────────────────────────────────────┘
+                      │
+                      ▼
+            ┌──────────────────────┐
+            │  Is Python installed? │
+            └──────────┬────────────┘
+                       │
+              ┌────────┴────────┐
+             YES               NO
+              │                 │
+              ▼                 ▼
+    ┌──────────────────┐  ┌──────────────────┐
+    │ Restart Terminal │  │ Install Python   │
+    │ Try: python3     │  │ Check "Add PATH" │
+    └──────────────────┘  └──────────────────┘
+
+
+    ┌─────────────────────────────────────────────────────────┐
+    │  Problem: "Cannot activate virtual environment"         │
+    └─────────────────┬───────────────────────────────────────┘
+                      │
+                      ▼
+            ┌──────────────────────┐
+            │  Using PowerShell?   │
+            └──────────┬────────────┘
+                       │
+              ┌────────┴────────┐
+             YES               NO
+              │                 │
+              ▼                 ▼
+    ┌──────────────────┐  ┌──────────────────┐
+    │ Run this first:  │  │ Try CMD instead: │
+    │ Set-Execution    │  │ .venv\Scripts\   │
+    │ Policy Remote    │  │ activate.bat     │
+    │ Signed           │  └──────────────────┘
+    └──────────────────┘
+
+
+    ┌─────────────────────────────────────────────────────────┐
+    │  Problem: "Port 5000 already in use"                    │
+    └─────────────────┬───────────────────────────────────────┘
+                      │
+                      ▼
+            ┌──────────────────────┐
+            │  Edit run.py         │
+            │  Change port=5000    │
+            │  to port=5001        │
+            └──────────┬────────────┘
+                       │
+                       ▼
+            ┌──────────────────────┐
+            │  Access at:          │
+            │  http://127.0.0.1    │
+            │  :5001               │
+            └──────────────────────┘
+
+
+═══════════════════════════════════════════════════════════════════════
+
+                    TIME ESTIMATES
+
+═══════════════════════════════════════════════════════════════════════
+
+    Step                              Time
+    ────────────────────────────────────────────────────────
+    Install Python                    5 minutes
+    Extract ZIP                       1 minute
+    Open Terminal                     30 seconds
+    Navigate to folder                30 seconds
+    Create virtual environment        1 minute
+    Activate virtual environment      10 seconds
+    Install dependencies              5-10 minutes ⏳
+    Copy .env file                    30 seconds
+    Initialize database               30 seconds
+    Run application                   10 seconds
+    ────────────────────────────────────────────────────────
+    TOTAL (First Time)                ~15-20 minutes
+
+
+    NEXT TIME (After Setup):
+    ────────────────────────────────────────────────────────
+    Navigate to folder                30 seconds
+    Activate virtual environment      10 seconds
+    Run application                   10 seconds
+    ────────────────────────────────────────────────────────
+    TOTAL (Subsequent Runs)           ~1 minute
+
+
+═══════════════════════════════════════════════════════════════════════
+
+                    WHAT GETS INSTALLED
+
+═══════════════════════════════════════════════════════════════════════
+
+    Package                Size        Purpose
+    ────────────────────────────────────────────────────────
+    Flask                  ~5 MB       Web framework
+    PyTorch                ~800 MB     Machine learning
+    Transformers           ~400 MB     AI models
+    Pillow                 ~10 MB      Image processing
+    SQLAlchemy             ~5 MB       Database
+    Other packages         ~100 MB     Various utilities
+    ────────────────────────────────────────────────────────
+    TOTAL                  ~1.3 GB     (plus model downloads)
+
+
+═══════════════════════════════════════════════════════════════════════
+
+                    SYSTEM REQUIREMENTS
+
+═══════════════════════════════════════════════════════════════════════
+
+    Component              Minimum         Recommended
+    ────────────────────────────────────────────────────────
+    OS                     Win 10/11       Win 11
+                           macOS 10.15     macOS 12+
+                           Ubuntu 20.04    Ubuntu 22.04
+
+    RAM                    4 GB            8 GB
+
+    Disk Space             2 GB free       5 GB free
+
+    Internet               Required        Broadband
+                           (first run)
+
+    Python Version         3.10+           3.12+
+
+    Browser                Any modern      Chrome/Firefox
+
+
+═══════════════════════════════════════════════════════════════════════
+
+                    FOLDER STRUCTURE AFTER SETUP
+
+═══════════════════════════════════════════════════════════════════════
+
+    crop-disease-detector/
+    │
+    ├── python_site/                    ← YOU ARE HERE
+    │   │
+    │   ├── .venv/                      ← Virtual environment (NEW)
+    │   │   ├── Scripts/                ← Activation scripts
+    │   │   └── Lib/                    ← Installed packages
+    │   │
+    │   ├── app/                        ← Application code
+    │   │   ├── __init__.py
+    │   │   ├── routes.py
+    │   │   ├── inference.py
+    │   │   ├── models.py
+    │   │   ├── seed_data.py            ← 60+ diseases
+    │   │   ├── static/
+    │   │   └── templates/
+    │   │
+    │   ├── instance/                   ← Database (NEW)
+    │   │   └── crop_disease.db         ← Created by init_db.py
+    │   │
+    │   ├── scripts/
+    │   │   ├── init_db.py              ← Run this once
+    │   │   ├── build_dataset.py
+    │   │   └── train_model.py
+    │   │
+    │   ├── .env                        ← Config (NEW - you create)
+    │   ├── .env.example                ← Template
+    │   ├── requirements.txt            ← Dependencies list
+    │   └── run.py                      ← START HERE!
+    │
+    └── [Documentation files]
+
+
+═══════════════════════════════════════════════════════════════════════
+
+Need more help? Check:
+→ INSTALLATION_GUIDE_FOR_RECIPIENTS.md (Detailed)
+→ QUICK_SETUP_FOR_RECIPIENTS.txt (Quick reference)
+→ python_site/README.md (Full documentation)
+
+═══════════════════════════════════════════════════════════════════════

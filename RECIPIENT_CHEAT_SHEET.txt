@@ -1,0 +1,128 @@
+┌──────────────────────────────────────────────────────────────────┐
+│                                                                  │
+│         🌾 CROP DISEASE DETECTOR - SETUP CHEAT SHEET 🌾         │
+│                                                                  │
+│              Print this or keep it handy!                        │
+│                                                                  │
+└──────────────────────────────────────────────────────────────────┘
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📥 BEFORE YOU START
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Download Python: https://python.org/downloads/
+⚠️ Check "Add Python to PATH" during install!
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚡ WINDOWS - COPY & PASTE THESE COMMANDS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# 1. Navigate (replace path with yours)
+cd C:\path\to\crop-disease-detector\python_site
+
+# 2. Create virtual environment
+python -m venv .venv
+
+# 3. Activate (PowerShell)
+.\.venv\Scripts\Activate.ps1
+
+# 4. Install packages (takes 5-10 min)
+pip install -r requirements.txt
+
+# 5. Setup environment
+Copy-Item .env.example .env
+
+# 6. Initialize database
+python scripts\init_db.py
+
+# 7. Run!
+python run.py
+
+# 8. Open browser: http://127.0.0.1:5000
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚡ macOS/LINUX - COPY & PASTE THESE COMMANDS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# 1. Navigate (replace path with yours)
+cd ~/path/to/crop-disease-detector/python_site
+
+# 2. Create virtual environment
+python3 -m venv .venv
+
+# 3. Activate
+source .venv/bin/activate
+
+# 4. Install packages (takes 5-10 min)
+pip install -r requirements.txt
+
+# 5. Setup environment
+cp .env.example .env
+
+# 6. Initialize database
+python scripts/init_db.py
+
+# 7. Run!
+python run.py
+
+# 8. Open browser: http://127.0.0.1:5000
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔄 RUNNING IT AGAIN (NEXT TIME)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Windows:
+cd C:\path\to\crop-disease-detector\python_site
+.\.venv\Scripts\Activate.ps1
+python run.py
+
+macOS/Linux:
+cd ~/path/to/crop-disease-detector/python_site
+source .venv/bin/activate
+python run.py
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚠️ COMMON PROBLEMS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+"python is not recognized"
+→ Install Python, check "Add to PATH", restart terminal
+
+"Cannot activate" (Windows)
+→ Run: Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+
+"Port 5000 in use"
+→ Edit run.py, change port to 5001
+
+"No module named 'app'"
+→ Make sure you're in python_site folder
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📚 HELP FILES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+README_FOR_ZIP_RECIPIENTS.md    ← Start here!
+QUICK_SETUP_FOR_RECIPIENTS.txt  ← Quick commands
+INSTALLATION_GUIDE...md          ← Detailed guide
+SETUP_FLOWCHART.txt              ← Visual guide
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⏱️ TIME ESTIMATES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+First time setup: 15-20 minutes
+Next time: 1 minute
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✨ WHAT YOU GET
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ 60+ crop diseases
+✅ 15+ crop types
+✅ AI detection
+✅ Treatment advice
+✅ Web interface
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Cut along this line and keep handy! ✂️
