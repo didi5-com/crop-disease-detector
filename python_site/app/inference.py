@@ -5,13 +5,18 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
-import torch
 from PIL import Image
 
 from .seed_data import build_disease_lookup
 from .utils import normalize_crop_name, parse_general_label, parse_specialized_label
 
 LOGGER = logging.getLogger(__name__)
+
+try:
+    import torch
+except ModuleNotFoundError:  # pragma: no cover
+    torch = None
+    LOGGER.warning("PyTorch is not installed; ML inference backends will be disabled.")
 
 
 @dataclass
@@ -46,6 +51,9 @@ class HFModelBackend:
 
     def _ensure_loaded(self) -> None:
         if self._loaded or self._load_error:
+            return
+        if torch is None:
+            self._load_error = "torch_not_installed"
             return
 
         try:
@@ -123,6 +131,9 @@ class LocalCheckpointBackend:
 
     def _ensure_loaded(self) -> None:
         if self._loaded or self._load_error:
+            return
+        if torch is None:
+            self._load_error = "torch_not_installed"
             return
 
         if not self.checkpoint_path.exists():
