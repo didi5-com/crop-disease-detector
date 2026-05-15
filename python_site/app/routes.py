@@ -159,7 +159,14 @@ def uploaded_file(filename: str):
 
 @main_bp.get("/api/health")
 def health():
-    return jsonify({"status": "ok", "service": "python-crop-disease-detector"})
+    engine = _prediction_engine()
+    return jsonify(
+        {
+            "status": "ok",
+            "service": "python-crop-disease-detector",
+            "inference": engine.backend_status(),
+        }
+    )
 
 
 @main_bp.post("/api/predict")

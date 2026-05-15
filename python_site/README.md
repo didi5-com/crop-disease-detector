@@ -66,3 +66,18 @@ Copy `.env.example` to `.env` and adjust values as needed:
 - `POST /api/predict` with form-data:
   - `leaf_image` file
   - `crop_type` optional (or `auto`)
+
+## PythonAnywhere deployment note (torch error fix)
+If your web app log shows `ModuleNotFoundError: No module named 'torch'`, install dependencies in the **same virtualenv used by your WSGI app**:
+
+```bash
+cd ~/crop-disease-detector/python_site
+mkvirtualenv --python=/usr/bin/python3.11 cropdetector-311   # run once
+workon cropdetector-311
+pip install -r requirements.txt
+```
+
+Then in the PythonAnywhere **Web** tab:
+1. Set your virtualenv path to that environment.
+2. Reload the web app.
+3. Check `/api/health` and confirm `inference.torch_available` is `true`.
