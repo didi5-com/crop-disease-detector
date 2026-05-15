@@ -236,6 +236,30 @@ class PredictionEngine:
             ),
         ]
 
+    def backend_status(self) -> dict[str, Any]:
+        status = {
+            "torch_available": torch is not None,
+            "available_backends": 0,
+            "total_backends": len(self.backends),
+            "backends": [],
+        }
+
+        for backend in self.backends:
+            backend_name = getattr(backend, "source_name", backend.__class__.__name__)
+            backend_loaded = getattr(backend, "_loaded", False)
+            load_error = getattr(backend, "_load_error", None)
+            status["backends"].append(
+                {
+                    "name": backend_name,
+                    "loaded": bool(backend_loaded),
+                    "load_error": load_error,
+                }
+            )
+            if backend_loaded:
+                status["available_backends"] += 1
+
+        return status
+
     def _build_unknown_response(self, crop_hint: str | None, top_candidates: list[dict]) -> dict:
         return {
             "crop_type": crop_hint or "unknown",
